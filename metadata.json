@@ -1,0 +1,8 @@
+{
+  "name": " Focus Flow",
+  "description": "All-in-one personalized study workspace for students to plan studies, manage tasks, focus with a timer, organize subjects, and track progress.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

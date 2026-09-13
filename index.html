@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Flow - All-in-One Study Workspace & Focus Timer for Students</title>
+    <meta name="description" content="All-in-one personalized study workspace for students to plan studies, manage tasks, focus with interval timers, organize subjects, and track progress." />
+    <link rel="canonical" href="https://focusflow.in/" />
+    <meta name="theme-color" content="#4F46E5" />
+    <meta property="og:title" content="Focus Flow - All-in-One Study Workspace & Focus Timer for Students" />
+    <meta property="og:description" content="All-in-one personalized study workspace for students to plan studies, manage tasks, focus with interval timers, organize subjects, and track progress." />
+    <meta property="og:url" content="https://focusflow.in/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Focus Flow" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Focus Flow - All-in-One Study Workspace" />
+    <meta name="twitter:description" content="Free study timer, pomodoro sprints, and spaced repetition planner for students." />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Focus Flow",
+      "url": "https://focusflow.in",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "All-in-one personalized study workspace for students to plan studies, manage tasks, focus with interval timers, and track progress."
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        // Suppress any uncaught "Illegal constructor" error emitted by sandboxed iframe restrictions
+        window.addEventListener('error', function(e) {
+          if (e && e.message && e.message.includes('Illegal constructor')) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return true;
+          }
+        }, true);
+
+        // Guard ErrorEvent constructor in sandboxed frames
+        try {
+          new window.ErrorEvent('error');
+        } catch (_) {
+          try {
+            var NativeErrorEvent = window.ErrorEvent;
+            window.ErrorEvent = function(type, options) {
+              try {
+                var ev = document.createEvent('Event');
+                ev.initEvent(type, options && options.bubbles || false, options && options.cancelable || false);
+                if (options) {
+                  for (var k in options) {
+                    try { ev[k] = options[k]; } catch (err) {}
+                  }
+                }
+                return ev;
+              } catch (err) {
+                return { type: type, message: options && options.message || '', error: options && options.error };
+              }
+            };
+            if (NativeErrorEvent) {
+              window.ErrorEvent.prototype = NativeErrorEvent.prototype;
+            }
+          } catch (err) {}
+        }
+
+        // Guard Notification constructor in sandboxed frames
+        if (typeof window !== 'undefined' && 'Notification' in window) {
+          var isNotificationIllegal = false;
+          try {
+            if (window.self !== window.top) {
+              isNotificationIllegal = true;
+            }
+          } catch (_) {
+            isNotificationIllegal = true;
+          }
+          if (isNotificationIllegal) {
+            try {
+              var SafeNotification = function(title, options) {
+                return { title: title, ...options, close: function() {} };
+              };
+              SafeNotification.permission = 'denied';
+              SafeNotification.requestPermission = function() { return Promise.resolve('denied'); };
+              window.Notification = SafeNotification;
+            } catch (_) {}
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-[#FAFAFA] text-slate-900 antialiased selection:bg-indigo-100 selection:text-indigo-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

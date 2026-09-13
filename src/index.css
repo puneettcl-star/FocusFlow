@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+:root {
+  --bg-app: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F1F5F9;
+  --border-theme: #E2E8F0;
+  --border-hover: #CBD5E1;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --accent-primary: #4F46E5;
+  --accent-hover: #4338CA;
+  --accent-subtle: #EEF2FF;
+  --accent-text: #4338CA;
+  --timer-track: #E2E8F0;
+  --timer-ring: #4F46E5;
+  --chart-bar: #6366F1;
+  --chart-grid: #F1F5F9;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+/* Accessibility: High visibility focus outline for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--accent-primary, #4F46E5) !important;
+  outline-offset: 2px !important;
+}
+
+/* Ensure buttons, links, inputs have visible focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-primary, #4F46E5) !important;
+  outline-offset: 2px !important;
+}
+
+/* Accessible touch target utility (at least 44px on mobile) */
+.touch-target-44 {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optimize touch responsiveness */
+html {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile Safe Area helper */
+.safe-area-bottom {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+}
+.theme-bg-app {
+  background-color: var(--bg-app) !important;
+}
+
+.theme-bg-card {
+  background-color: var(--bg-card) !important;
+}
+
+.theme-bg-subtle {
+  background-color: var(--bg-subtle) !important;
+}
+
+.theme-border {
+  border-color: var(--border-theme) !important;
+}
+
+.theme-border-hover:hover {
+  border-color: var(--border-hover) !important;
+}
+
+.theme-text-primary {
+  color: var(--text-primary) !important;
+}
+
+.theme-text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.theme-text-muted {
+  color: var(--text-muted) !important;
+}
+
+.theme-accent-bg {
+  background-color: var(--accent-primary) !important;
+}
+
+.theme-accent-bg:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+.theme-accent-subtle {
+  background-color: var(--accent-subtle) !important;
+}
+
+.theme-accent-text {
+  color: var(--accent-text) !important;
+}
+
+/* Custom scrollbars that adapt to themes */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-theme);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}

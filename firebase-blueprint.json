@@ -1,0 +1,180 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with study metadata, streak, and daily targets",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "avatarId": { "type": "string" },
+        "dailyGoalMinutes": { "type": "number" },
+        "currentStreak": { "type": "number" },
+        "lastStudyDate": { "type": "string" },
+        "totalStudyMinutes": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "displayName"]
+    },
+    "UserSettings": {
+      "title": "UserSettings",
+      "description": "User configurable preferences, theme, sounds, and study timer intervals",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "theme": { "type": "string", "enum": ["light", "dark", "calm", "ocean", "sakura", "cyber", "classic"] },
+        "dailyGoalMinutes": { "type": "number" },
+        "soundVolume": { "type": "number" },
+        "timerSound": { "type": "boolean" },
+        "soundType": { "type": "string", "enum": ["chime", "bell", "digital", "wood"] },
+        "browserNotifications": { "type": "boolean" },
+        "breakAlerts": { "type": "boolean" },
+        "dailyReminder": { "type": "boolean" },
+        "dailyReminderTime": { "type": "string" },
+        "pomodoroDuration": { "type": "number" },
+        "shortBreakDuration": { "type": "number" },
+        "longBreakDuration": { "type": "number" },
+        "longBreakInterval": { "type": "number" },
+        "autoStartBreaks": { "type": "boolean" },
+        "autoStartPomodoros": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "theme", "dailyGoalMinutes", "updatedAt"]
+    },
+    "Subject": {
+      "title": "Subject",
+      "description": "Academic course or subject categorized by color",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "color": { "type": "string" },
+        "icon": { "type": "string" },
+        "targetHoursPerWeek": { "type": "number" },
+        "totalStudyMinutes": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "name", "color"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "Student homework, assignment or study task with relational link to Subject",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "subjectId": { "type": "string" },
+        "subjectName": { "type": "string" },
+        "subjectColor": { "type": "string" },
+        "priority": { "type": "string", "enum": ["low", "medium", "high", "urgent"] },
+        "dueDate": { "type": "string" },
+        "dueTime": { "type": "string" },
+        "scheduledDate": { "type": "string" },
+        "estimatedPomodoros": { "type": "number" },
+        "completedPomodoros": { "type": "number" },
+        "completed": { "type": "boolean" },
+        "completedAt": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "completed", "createdAt"]
+    },
+    "FocusSession": {
+      "title": "FocusSession",
+      "description": "Recorded study session with relational links to Subject and Task",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "durationMinutes": { "type": "number" },
+        "taskId": { "type": "string" },
+        "taskTitle": { "type": "string" },
+        "subjectId": { "type": "string" },
+        "subjectName": { "type": "string" },
+        "mode": { "type": "string" },
+        "notes": { "type": "string" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "durationMinutes", "completedAt"]
+    },
+    "Goal": {
+      "title": "Goal",
+      "description": "Student academic goal with measurable progress and optional Subject relation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "subjectId": { "type": "string" },
+        "subjectName": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "targetDate": { "type": "string" },
+        "targetValue": { "type": "number" },
+        "currentValue": { "type": "number" },
+        "unit": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "completedAt": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "targetDate", "targetValue", "unit", "completed", "createdAt"]
+    },
+    "StudyStatistics": {
+      "title": "StudyStatistics",
+      "description": "Aggregated user study statistics, streaks, and subject distribution",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "totalStudyMinutes": { "type": "number" },
+        "totalSessions": { "type": "number" },
+        "totalTasksCompleted": { "type": "number" },
+        "currentStreak": { "type": "number" },
+        "bestStreak": { "type": "number" },
+        "lastStudyDate": { "type": "string" },
+        "weeklyStudyMinutes": { "type": "number" },
+        "monthlyStudyMinutes": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "totalStudyMinutes", "totalSessions", "totalTasksCompleted", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile and account information"
+    },
+    "/users/{userId}/settings/{settingId}": {
+      "schema": { "$ref": "#/entities/UserSettings" },
+      "description": "User settings and custom study configurations"
+    },
+    "/users/{userId}/subjects/{subjectId}": {
+      "schema": { "$ref": "#/entities/Subject" },
+      "description": "User study subjects"
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": { "$ref": "#/entities/Task" },
+      "description": "User study tasks and deadlines with subject relationships"
+    },
+    "/users/{userId}/sessions/{sessionId}": {
+      "schema": { "$ref": "#/entities/FocusSession" },
+      "description": "User completed focus sessions with task and subject relationships"
+    },
+    "/users/{userId}/goals/{goalId}": {
+      "schema": { "$ref": "#/entities/Goal" },
+      "description": "User study goals and measurable targets"
+    },
+    "/users/{userId}/statistics/{statId}": {
+      "schema": { "$ref": "#/entities/StudyStatistics" },
+      "description": "User persistent aggregated study statistics and streaks"
+    }
+  }
+}

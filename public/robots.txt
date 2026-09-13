@@ -1,0 +1,16 @@
+# Focus Flow Robots.txt
+# Production Domain: https://focusflow.in
+
+User-agent: *
+Allow: /
+Allow: /study-timer
+Allow: /pomodoro-timer
+Allow: /study-planner
+Allow: /focus-timer
+
+# App private state / workspace
+Disallow: /api/
+Disallow: /_internal/
+
+# Sitemap location
+Sitemap: https://focusflow.in/sitemap.xml
